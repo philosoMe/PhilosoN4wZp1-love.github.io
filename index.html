@@ -1,63 +1,107 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For My Queenduck</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      background: #1e1e2f;
+      color: white;
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
-      color: #333;
     }
-    header {
-      background: #4f46e5;
-      color: white;
-      padding: 2rem;
+
+    .lockscreen {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-    }
-    section {
-      max-width: 800px;
-      margin: auto;
       padding: 2rem;
     }
-    .project {
-      background: white;
-      padding: 1rem;
+
+    .lockscreen h1 {
+      font-size: 2rem;
       margin-bottom: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    footer {
+
+    input[type="password"] {
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      border: none;
+      background-color: #ff69b4;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .content {
+      display: none;
+      padding: 2rem;
+    }
+
+    .hero {
       text-align: center;
-      padding: 1rem;
-      color: #777;
+      padding: 4rem 1rem;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    @media(max-width: 600px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Your Name</h1>
-    <p>Web Developer | Designer | Whatever You Are</p>
-  </header>  <section>
-    <h2>About Me</h2>
-    <p>Hello! I'm [Your Name], a passionate developer who loves creating beautiful websites and apps. This is my portfolio.</p><h2>Projects</h2>
-<div class="project">
-  <h3>Project One</h3>
-  <p>Description of your first project. What it does, what tools you used, etc.</p>
-</div>
-<div class="project">
-  <h3>Project Two</h3>
-  <p>Description of your second project.</p>
-</div>
 
-<h2>Contact</h2>
-<p>Email: youremail@example.com</p>
-<p>LinkedIn | GitHub | Twitter (add your links)</p>
+  <div class="lockscreen" id="lockscreen">
+    <h1>Hey queenduck, enter our magical code word:</h1>
+    <input type="password" id="codeInput" placeholder="Enter code" />
+    <button onclick="checkCode()">Unlock</button>
+    <p id="error" style="color: pink; margin-top: 1rem;"></p>
+  </div>
 
-  </section>  <footer>
-    <p>&copy; 2025 Your Name</p>
-  </footer>
+  <div class="content" id="mainContent">
+    <div class="hero">
+      <h2>Hi queenduck,</h2>
+      <p>This little place on the internet is just for you.</p>
+      <p>More magic coming soon...</p>
+    </div>
+  </div>
+
+  <script>
+    const correctCode = "NAMOUPADHYAY@2513";
+    function checkCode() {
+      const input = document.getElementById("codeInput").value;
+      if (input === correctCode) {
+        document.getElementById("lockscreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+      } else {
+        document.getElementById("error").innerText = "Oops! Wrong code, try again...";
+      }
+    }
+  </script>
+
 </body>
 </html>
