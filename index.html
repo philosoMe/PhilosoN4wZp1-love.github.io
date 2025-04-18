@@ -274,5 +274,10 @@
       document.body.appendChild(sparkle);
       setTimeout(() => sparkle.remove(), 1000);
     });
-  </script></body>
+  <script>
+  document.addEventListener('click', function () {
+    const audio = document.getElementById('bg-music');
+    audio.play().catch(e => console.log('Autoplay prevented:', e));
+  }, { once: true });
+</script></body>
 </html>
