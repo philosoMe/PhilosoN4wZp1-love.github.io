@@ -236,10 +236,14 @@
     let isPlaying = false;
 
     function startExperience() {
-      document.getElementById('welcome').style.display = 'none';
-      audio.play();
-      isPlaying = true;
-      dropHearts();
+  document.getElementById('welcome').style.display = 'none';
+
+  audio.play().catch((err) => {
+    console.log('Autoplay blocked. Waiting for user interaction.', err);
+  });
+
+  isPlaying = true;
+  dropHearts();
     }
 
     function toggleAudio() {
