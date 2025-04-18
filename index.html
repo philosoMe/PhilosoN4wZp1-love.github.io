@@ -232,48 +232,7 @@
     <h2 class="section-title">A Soft Goodbye</h2>
     <p>This isn’t the end — it’s just the first line in our story written in code. I’ll keep building this little world for you, queenduck. More pages, more memories, more love.</p>
     <p style="text-align:center; margin-top:30px;">— From your human</p>
-  </section>  <script>
-    const audio = document.getElementById('bgAudio');
-    const heartsContainer = document.getElementById('hearts');
-    let isPlaying = false;
-
-    function startExperience() {
-      document.getElementById('welcome').style.display = 'none';
-      audio.play();
-      isPlaying = true;
-      dropHearts();
-    }
-
-    function toggleAudio() {
-      if (isPlaying) {
-        audio.pause();
-        event.target.textContent = 'Play Music';
-      } else {
-        audio.play();
-        event.target.textContent = 'Pause Music';
-      }
-      isPlaying = !isPlaying;
-    }
-
-    function dropHearts() {
-      setInterval(() => {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.style.left = Math.random() * 100 + 'vw';
-        heartsContainer.appendChild(heart);
-        setTimeout(() => heart.remove(), 6000);
-      }, 400);
-    }
-
-    document.addEventListener('mousemove', function(e) {
-      const sparkle = document.createElement('div');
-      sparkle.classList.add('sparkle');
-      sparkle.style.top = e.clientY + 'px';
-      sparkle.style.left = e.clientX + 'px';
-      document.body.appendChild(sparkle);
-      setTimeout(() => sparkle.remove(), 1000);
-    });
-  </script>
+  </section>  
   <div class="hearts" id="hearts"></div>
 
 <script>
