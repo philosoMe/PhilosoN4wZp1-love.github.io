@@ -183,7 +183,28 @@
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+    
+* {
+  box-sizing: border-box;
+}
 
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.gallery, .queen-gallery, .queen-videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+  padding: 10px 0;
+}
+  
   </style>
 </head>
 <body>
@@ -263,7 +284,7 @@ Champion of Positivity – Turning every challenge into an opportunity to grow a
 <img src="https://i.imgur.com/YFxkndm.jpeg" alt="memory 18" />
 <img src="https://i.imgur.com/WP0uh1s.jpeg" alt="memory 19" />
 <img src="https://i.imgur.com/EYxT98k.jpeg" alt="memory 20" />
-
+<img src="https://i.imgur.com/h5RzS8U.jpeg" alt="memory 2" />
 <!-- Videos -->
 <video src="video1.mp4" controls></video>
 <video src="video2.mp4" controls></video>
@@ -271,7 +292,6 @@ Champion of Positivity – Turning every challenge into an opportunity to grow a
 <video src="video4.mp4" controls></video>
 <video src="video5.mp4" controls></video>
       <video src="video.mp4" controls></video>
-      <img src="https://i.imgur.com/h5RzS8U.jpeg" alt="memory 2" />
     </div>
   </section>  <section>
     <h2 class="section-title">Secret Love Notes</h2>
