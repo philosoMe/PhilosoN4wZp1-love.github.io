@@ -241,10 +241,36 @@ The Heartbeat of My World – Making everything feel complete with your endless 
 Champion of Positivity – Turning every challenge into an opportunity to grow and love more.</li>
     </ul>
   </section>  <section>
-    <h2 class="section-title">Gallery of Us</h2>
+    <h2 class="section-title">Gallery of My Precious Diamond Person</h2>
     <div class="gallery">
       <img src="https://i.imgur.com/Zo4pO9K.jpeg" alt="memory 1" />
-      <video src="video.mp4" controls muted></video>
+      <!-- Additional Gallery Items -->
+<img src="https://i.imgur.com/6tZz9Q2.jpeg" alt="memory 3" />
+<img src="https://i.imgur.com/UxtkbTZ.jpeg" alt="memory 4" />
+<img src="https://i.imgur.com/WrxOtwA.jpeg" alt="memory 5" />
+<img src="https://i.imgur.com/ghSl50E.jpeg" alt="memory 6" />
+<img src="https://i.imgur.com/F1GnEKm.jpeg" alt="memory 7" />
+<img src="https://i.imgur.com/Gt9GEa0.jpeg" alt="memory 8" />
+<img src="https://i.imgur.com/lh61iK6.jpeg" alt="memory 9" />
+<img src="https://i.imgur.com/74J1HqL.jpeg" alt="memory 10" />
+<img src="https://i.imgur.com/MWMyDaZ.jpeg" alt="memory 11" />
+<img src="https://i.imgur.com/lugvY3I.jpeg" alt="memory 12" />
+<img src="https://i.imgur.com/6ksZTyh.jpeg" alt="memory 13" />
+<img src="https://i.imgur.com/3QzDZAf.jpeg" alt="memory 14" />
+<img src="https://i.imgur.com/NYYxCsh.jpeg" alt="memory 15" />
+<img src="https://i.imgur.com/zDZ2AjB.jpeg" alt="memory 16" />
+<img src="https://i.imgur.com/RNMy9hJ.jpeg" alt="memory 17" />
+<img src="https://i.imgur.com/YFxkndm.jpeg" alt="memory 18" />
+<img src="https://i.imgur.com/WP0uh1s.jpeg" alt="memory 19" />
+<img src="https://i.imgur.com/EYxT98k.jpeg" alt="memory 20" />
+
+<!-- Videos -->
+<video src="video1.mp4" controls></video>
+<video src="video2.mp4" controls></video>
+<video src="video3.mp4" controls></video>
+<video src="video4.mp4" controls></video>
+<video src="video5.mp4" controls></video>
+      <video src="video.mp4" controls></video>
       <img src="https://i.imgur.com/h5RzS8U.jpeg" alt="memory 2" />
     </div>
   </section>  <section>
@@ -254,7 +280,7 @@ Champion of Positivity – Turning every challenge into an opportunity to grow a
 <div id="note2" class="note">Even when you're being dramatic or clumsy — I adore it. I adore *you*. Even more than tangerines, and that’s saying something.</div>
 
   </section>  <section class="quote-box">
-    "If you ever feel small, come here. This whole place exists just because I love you."
+    "If you ever feel low, come here. This whole place exists just because I love you."
   </section>  <section>
     <h2 class="section-title">A Soft Goodbye</h2>
     <p>This isn’t the end — it’s just the first line in our story written in code. I’ll keep building this little world for you, queenduck. More pages, more memories, more love.</p>
@@ -306,5 +332,15 @@ Champion of Positivity – Turning every challenge into an opportunity to grow a
     document.body.appendChild(sparkle);
     setTimeout(() => sparkle.remove(), 1000);
   });
+  // Pause background music when any video is played
+document.querySelectorAll('video').forEach(video => {
+  video.addEventListener('play', () => {
+    if (!audio.paused) {
+      audio.pause();
+      document.querySelector('.toggle-audio').textContent = 'Play Music';
+      isPlaying = false;
+    }
+  });
+});
 </script></body>
 </html>
