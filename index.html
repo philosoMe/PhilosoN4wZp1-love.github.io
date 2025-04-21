@@ -345,6 +345,39 @@ document.querySelectorAll('video').forEach(video => {
     document.getElementById('bg-music').load();
   });
 </script>
+ <script>
+  // Load hero background image dynamically
+  storage.ref('images/queen-top.jpg').getDownloadURL().then((url) => {
+    const style = `
+      .hero {
+        background: url('${url}') no-repeat center center/cover;
+      }
+    `;
+    document.getElementById("dynamic-bg-style").textContent = style;
+  });
+
+  // Load image gallery (queen1.jpg to queen21.jpg)
+  const imageGallery = document.getElementById("imageGallery");
+  for (let i = 1; i <= 21; i++) {
+    storage.ref(`images/queen${i}.jpg`).getDownloadURL().then((url) => {
+      const img = document.createElement("img");
+      img.src = url;
+      img.alt = `memory ${i}`;
+      imageGallery.appendChild(img);
+    });
+  }
+
+  // Load video gallery (queen1.mp4 to queen8.mp4)
+  const videoGallery = document.getElementById("videoGallery");
+  for (let i = 1; i <= 8; i++) {
+    storage.ref(`videos/queen${i}.mp4`).getDownloadURL().then((url) => {
+      const vid = document.createElement("video");
+      vid.src = url;
+      vid.controls = true;
+      videoGallery.appendChild(vid);
+    });
+  }
+ </script>     
 <script>
   function login() {
     const email = document.getElementById("email").value;
