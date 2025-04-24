@@ -1,0 +1,397 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <!-- Firebase Scripts -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script> 
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAD4KKpk3EWYei0kUwXcR7xJz_sBrd_PU4",
+    authDomain: "queenduck-love-site.firebaseapp.com",
+    projectId: "queenduck-love-site",
+    storageBucket: "queenduck-love-site.firebasestorage.app",
+    messagingSenderId: "337609917069",
+    appId: "1:337609917069:web:05bf69258c888210b118c4"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Queenduck</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Raleway', sans-serif;
+      background: linear-gradient(135deg, #fce3ec, #ffe9f2);
+      color: #333;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  color: white;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  animation: fadeIn 2s ease-in-out;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  animation: fadeIn 3s ease-in-out;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #e91e63;
+  margin-bottom: 20px;
+}
+
+.resume-like {
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.gallery img, .gallery video {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.quote-box {
+  font-style: italic;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 1.5rem;
+  background: #ffe0ed;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  margin-top: 30px;
+}
+
+.note {
+  display: none;
+  padding: 1rem;
+  background: #fff5f9;
+  border-left: 5px solid #e91e63;
+  margin-top: 1rem;
+  border-radius: 10px;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.reveal-btn, .toggle-audio {
+  background: #e91e63;
+  border: none;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.welcome-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255, 238, 245, 0.95);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.4rem;
+}
+
+.welcome-overlay h2 {
+  color: #e91e63;
+  font-size: 2.2rem;
+}
+
+.hearts {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 998;
+}
+
+.heart {
+  width: 20px; height: 20px;
+  background: red;
+  position: absolute;
+  top: 100%;
+  transform: rotate(45deg);
+  animation: floatHearts 6s linear infinite;
+}
+
+.heart::before, .heart::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+.sparkle {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: gold;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.8;
+  animation: sparkle 1s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+@keyframes floatHearts {
+  0% { top: 100%; opacity: 1; transform: translateX(0) rotate(45deg); }
+  100% { top: -10%; opacity: 0; transform: translateX(100px) rotate(45deg); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+    
+* {
+  box-sizing: border-box;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.gallery, .queen-gallery, .queen-videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+  padding: 10px 0;
+}
+  
+  </style>
+  <style id="dynamic-bg-style"></style>
+</head>
+<body>
+  <div id="login-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff0f5; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+  <h2 style="color: #e91e63;">Hey Queenduck, Login to access your surprise!</h2>
+  <input type="email" id="email" placeholder="Email" style="padding: 10px; border-radius: 10px; margin: 10px; width: 80%;" />
+  <input type="password" id="password" placeholder="Password" style="padding: 10px; border-radius: 10px; margin: 10px; width: 80%;" />
+  <button onclick="login()" style="padding: 10px 20px; border-radius: 10px; background-color: #e91e63; color: white; border: none;">Login</button>
+  <p id="error" style="color:red;"></p>
+  </div>
+    <div id="main-content" style="display: none;">
+      <div class="welcome-overlay" id="welcome">
+  <h2>My Sweeetheart!</h2>
+  <p>Ready to melt down a little more?</p>
+  <button class="reveal-btn" onclick="startExperience()">Yes, show me!</button>
+</div>
+
+<audio id="bg-music" loop>
+  <source id="bg-source" type="audio/mpeg" />
+</audio>
+  <button class="toggle-audio" style="position: fixed; bottom: 20px; right: 20px; z-index: 999;" onclick="toggleAudio()">Pause Music</button>  <div class="hero">
+    <h1>Hi queenduck</h1>
+    <p>Welcome to a tiny world coded just for you. Because you're everything soft, silly, and real — like a movie character who escaped the screen and stole my heart.</p>
+  </div>  <section>
+    <h2 class="section-title">What This Is</h2>
+    <p>This isn’t just a website. It’s a love letter. A little garden of pixels where I can pour my thoughts and share with you how you make life feel... beautifully strange. Like tangerines in winter — unexpected, sweet, and so you.</p>
+  </section>  <section>
+    <h2 class="section-title">Why You’re Here</h2>
+    <p>Because you are my favorite person. Because you get shy with the world but act like a child with me — and that makes me fall in love every single time. Because you deserve magic, and this is just the beginning of what I want to make for you.</p>
+  </section>  <section class="resume-like">
+    <h2 class="section-title">What You Are To Me</h2>
+    <ul>
+      <li><strong>Title:</strong> CEO of My Heart</li>
+      <li><strong>Magical skills:</strong> Childishness + beyond imaginations + Incomparable audacity</li>
+      <li><strong>Achievements:</strong> Made me laugh like a fool | Gave my world color | Became my comfort human | Sunshine in Any Storm | Empathy Extraordinaire – Always knows exactly how to make everything feel better with just a few words | Heart Healer – Your love has the power to mend any hurt | Filling My Life with Joy – For always knowing how to make every day feel special, just like Aeh Sun.
+
+The Heartbeat of My World – Making everything feel complete with your endless care and attention.
+
+Champion of Positivity – Turning every challenge into an opportunity to grow and love more.</li>
+    </ul>
+  </section>  <section>
+    <h2 class="section-title">Gallery of My Precious Diamond Person</h2>
+    <div class="gallery" id="imageGallery"></div>
+    <div class="gallery" id="videoGallery"></div>
+  </section>  <section>
+    <h2 class="section-title">Secret Love Notes</h2>
+    <button class="reveal-btn" onclick="document.getElementById('note1').style.display='block'">Click me</button>
+    <div id="note1" class="note">Sometimes I look at you and forget every word I ever learned. That’s how overwhelming you are to me — like my brain just decides to admire you instead.</div><button class="reveal-btn" onclick="document.getElementById('note2').style.display='block'">And again...</button>
+<div id="note2" class="note">Even when you're being dramatic or clumsy — I adore it. I adore *you*. Even more than tangerines, and that’s saying something.</div>
+
+  </section>  <section class="quote-box">
+    "If you ever feel low, come here. This whole place exists just because I love you."
+  </section>  <section>
+    <h2 class="section-title">A Soft Goodbye</h2>
+    <p>This isn’t the end — it’s just the first line in our story written in code. I’ll keep building this little world for you, queenduck. More pages, more memories, more love.</p>
+    <p style="text-align:center; margin-top:30px;">— From your human</p>
+  </section>  
+  <div class="hearts" id="hearts"></div>
+
+<script>
+  const audio = document.getElementById('bg-music');
+  const heartsContainer = document.getElementById('hearts');
+  let isPlaying = false;
+
+  function startExperience() {
+    document.getElementById('welcome').style.display = 'none';
+    audio.play().then(() => {
+      isPlaying = true;
+      dropHearts();
+    }).catch((err) => {
+      console.error("Audio play failed:", err);
+    });
+  }
+
+  function toggleAudio() {
+    if (isPlaying) {
+      audio.pause();
+      event.target.textContent = 'Play Music';
+    } else {
+      audio.play();
+      event.target.textContent = 'Pause Music';
+    }
+    isPlaying = !isPlaying;
+  }
+
+  function dropHearts() {
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 400);
+  }
+
+  document.addEventListener('mousemove', function(e) {
+    const sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    sparkle.style.top = e.clientY + 'px';
+    sparkle.style.left = e.clientX + 'px';
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 1000);
+  });
+  // Pause background music when any video is played
+document.querySelectorAll('video').forEach(video => {
+  video.addEventListener('play', () => {
+    if (!audio.paused) {
+      audio.pause();
+      document.querySelector('.toggle-audio').textContent = 'Play Music';
+      isPlaying = false;
+    }
+  });
+});
+</script>
+<script>
+  const storage = firebase.storage();
+
+  // Load background music dynamically
+  storage.ref('music/aashiyan.mp3').getDownloadURL().then((url) => {
+    const source = document.getElementById('bg-source');
+    source.src = url;
+    document.getElementById('bg-music').load();
+  });
+</script>
+ <script>
+  // Load hero background image dynamically
+  storage.ref('images/queen-top.jpg').getDownloadURL().then((url) => {
+    const style = `
+      .hero {
+        background: url('${url}') no-repeat center center/cover;
+      }
+    `;
+    document.getElementById("dynamic-bg-style").textContent = style;
+  });
+
+  // Load image gallery (queen1.jpg to queen21.jpg)
+  const imageGallery = document.getElementById("imageGallery");
+  for (let i = 1; i <= 21; i++) {
+    storage.ref(`images/queen${i}.jpg`).getDownloadURL().then((url) => {
+      const img = document.createElement("img");
+      img.src = url;
+      img.alt = `memory ${i}`;
+      imageGallery.appendChild(img);
+    });
+  }
+
+  // Load video gallery (queen1.mp4 to queen8.mp4)
+  const videoGallery = document.getElementById("videoGallery");
+  for (let i = 1; i <= 8; i++) {
+    storage.ref(`videos/queen${i}.mp4`).getDownloadURL().then((url) => {
+      const vid = document.createElement("video");
+      vid.src = url;
+      vid.controls = true;
+      videoGallery.appendChild(vid);
+    });
+  }
+ </script>     
+<script>
+  function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const error = document.getElementById("error");
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(() => {
+        document.getElementById("login-container").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+      })
+      .catch((err) => {
+        error.textContent = "Wrong email or password!";
+      });
+  }
+</script> </body>
+  </html>
