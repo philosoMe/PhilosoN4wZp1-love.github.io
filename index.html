@@ -221,6 +221,36 @@ body {
   padding: 10px 0;
 }
   
+  </style> 
+  <style>
+  .imaginary-world {
+    text-align: center;
+    margin-top: 50px;
+    background: #f9f9f9;
+    padding: 40px 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  }
+
+  .imaginary-world h2 {
+    font-size: 26px;
+    color: #444;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  .imaginary-world img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    transition: transform 0.5s;
+  }
+
+  .imaginary-world img:hover {
+    transform: scale(1.05);
+  }
   </style>
   <style id="dynamic-bg-style"></style>
 </head>
@@ -272,7 +302,10 @@ Champion of Positivity – Turning every challenge into an opportunity to grow a
     <div id="note1" class="note">Sometimes I look at you and forget every word I ever learned. That’s how overwhelming you are to me — like my brain just decides to admire you instead.</div><button class="reveal-btn" onclick="document.getElementById('note2').style.display='block'">And again...</button>
 <div id="note2" class="note">Even when you're being dramatic or clumsy — I adore it. I adore *you*. Even more than tangerines, and that’s saying something.</div>
 
-  </section>  <section class="quote-box">
+  </section> <section class="imaginary-world">
+  <h2>Us together in our imaginary world.</h2>
+  <img id="imaginary-img" alt="Imaginary World" />
+  </section> <section class="quote-box">
     "If you ever feel low, come here. This whole place exists just because I love you."
   </section>  <section>
     <h2 class="section-title">A Soft Goodbye</h2>
@@ -378,7 +411,14 @@ document.querySelectorAll('video').forEach(video => {
       videoGallery.appendChild(vid);
     });
   }
- </script>     
+ </script> 
+      <script>
+  // Load imaginary world picture dynamically
+  const imaginaryImage = document.getElementById("imaginary-img");
+  storage.ref('images/imaginary.jpg').getDownloadURL().then((url) => {
+    imaginaryImage.src = url;
+  });
+      </script>
 <script>
   function login() {
     const email = document.getElementById("email").value;
