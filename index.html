@@ -359,13 +359,24 @@ Champion of Positivity – Turning every challenge into an opportunity to grow a
     setTimeout(() => sparkle.remove(), 1000);
   });
   // Pause background music when any video is played
-document.querySelectorAll('video').forEach(video => {
-  video.addEventListener('play', () => {
+const audio = document.getElementById('bg-music');
+const allVideos = document.querySelectorAll('video');
+
+allVideos.forEach(currentVideo => {
+  currentVideo.addEventListener('play', () => {
+    // Pause background music if playing
     if (!audio.paused) {
       audio.pause();
       document.querySelector('.toggle-audio').textContent = 'Play Music';
       isPlaying = false;
     }
+
+    // Pause all other videos
+    allVideos.forEach(otherVideo => {
+      if (otherVideo !== currentVideo) {
+        otherVideo.pause();
+      }
+    });
   });
 });
 </script>
